@@ -11,17 +11,20 @@ import java.util.Scanner;
  *
  * @author luizh
  */
-public class Exercicio04 {
-    
+public class Exercicio12 {
     public static void main(String[] args) {
+        double renda;
+        double total;
+        
         Scanner entrada = new Scanner(System.in);
-        double real;
-        double dolar;
         
-        System.out.println("Insira a quantidade em dólar: ");
-        dolar = entrada.nextDouble();
+        System.out.println("Insira a sua renda anual: ");
+        renda = entrada.nextDouble();
         
-        real = dolar * 5.10;
-        System.out.printf("Conversão para reais: %.2f", real);
+        if(renda <= 10800.0) {
+            System.out.println("Valor a pagar: isento");
+        }else if(renda > 10800 && renda <= 21600) {
+            total = (renda * 0.15) - 1620.0;
+        }
     }
 }
