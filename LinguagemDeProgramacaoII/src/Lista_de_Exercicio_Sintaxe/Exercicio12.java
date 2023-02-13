@@ -21,10 +21,14 @@ public class Exercicio12 {
         System.out.println("Insira a sua renda anual: ");
         renda = entrada.nextDouble();
         
-        if(renda <= 10800.0) {
+        if(renda <= 10800.00) {
             System.out.println("Valor a pagar: isento");
-        }else if(renda > 10800 && renda <= 21600) {
+        }else if(renda > 10800.00 && renda <= 21600.00) {
             total = (renda * 0.15) - 1620.0;
+            System.out.printf("Valor a pagar: R$%.2f \n", total);
+        }else{ 
+            total = (renda * 0.275) - 4320.0;
+            System.out.printf("Valor a pagar: R$%.2f \n", total);
         }
     }
 }
