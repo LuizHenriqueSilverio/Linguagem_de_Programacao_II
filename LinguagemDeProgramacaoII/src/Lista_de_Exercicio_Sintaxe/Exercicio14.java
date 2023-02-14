@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Exercicio14 {
     public static void main(String[] args) {
         String palavra, letra;
-        int tam;
+        int tam, qtd = 0;
         
         Scanner entrada = new Scanner(System.in);
         
@@ -25,11 +25,10 @@ public class Exercicio14 {
         for(int i = 0; i < tam; i++) {
             letra = palavra.substring(i, i+1);
             if(letra.equals("a") || letra.equals("A")) {
-                System.out.println("A palavra contem a letra 'a'!");
-                return;
+                qtd++;
             }
         }
         
-        System.out.println("A palavra nao contem a letra 'a'!");
+        System.out.println("A palavara contem " + qtd + " letra(s) 'a'.");
     }
 }
