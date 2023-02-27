@@ -13,6 +13,7 @@ public class Conta {
     String cliente;
     double saldo = 0;
     double limite;
+    Cliente titular;
     
     public void deposita(double deposito) {
         this.saldo += deposito;
