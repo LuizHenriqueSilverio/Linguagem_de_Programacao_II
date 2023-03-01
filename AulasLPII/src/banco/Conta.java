@@ -10,14 +10,21 @@ package banco;
  * @author luizh
  */
 public class Conta {
-    String cliente;
-    double saldo = 0;
-    double limite;
-    Cliente titular;
+    private double saldo = 0;
+    private double limite;
+    private Cliente titular;
+    
+    public double getSaldo() {
+        return this.saldo;
+    }
+    
+    public void setCliente(Cliente cliente){ 
+        this.titular = cliente;
+    }
     
     public void deposita(double deposito) {
         this.saldo += deposito;
-        System.out.println("Deposito efetuado com sucesso.");
+        System.out.println("Deposito efetuado para " + titular.getNome() +  " com sucesso.");
     }
     
     public boolean saca(double saque) {
