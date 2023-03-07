@@ -14,6 +14,13 @@ public class Porta {
     private int dimensaoX;
     private int dimensaoY;
     private int dimensaoZ;
+    
+    public Porta(String cor, int dimX, int dimY, int dimZ) {
+        this.cor = cor;
+        this.dimensaoX = dimX;
+        this.dimensaoY = dimY;
+        this.dimensaoZ = dimZ;
+    }
 
     /**
      * @return the cor
@@ -70,6 +77,42 @@ public class Porta {
     public void setDimensaoZ(int dimensaoZ) {
         this.dimensaoZ = dimensaoZ;
     }
+
+    /**
+     * @return the aberta
+     */
+    public boolean estaAberta() {
+        return aberta;
+    }
+
+    /**
+     * @param aberta the aberta to set
+     */
+    public void setAberta(boolean aberta) {
+        this.aberta = aberta;
+    }
     
+    public void abre() {
+        if(this.estaAberta()) {
+            System.out.println("A porta ja esta aberta!!!");
+            return;
+        }
+        
+        this.setAberta(true);
+        System.out.println("Porta aberta.");
+    }
     
+    public void fecha() {
+        if(!this.estaAberta()) {
+            System.out.println("A porta ja esta fechada!!!");
+            return;
+        }
+        
+        this.setAberta(false);
+        System.out.println("Porta fechada.");
+    }
+    
+    public void pinta(String cor) {
+        this.setCor(cor);
+    }
 }
