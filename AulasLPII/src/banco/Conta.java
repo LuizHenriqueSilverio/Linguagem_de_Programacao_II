@@ -12,7 +12,32 @@ package banco;
 public class Conta {
     private double saldo = 0;
     private double limite;
+    private int numero;
+    private static int totalDeContas;
     private Cliente titular;
+    
+    public Conta() {
+        System.out.println("Construindo uma conta");
+        Conta.totalDeContas += 1;
+    }
+    
+    public Conta(double saldo) {
+        this(); //invoca o construtor padrão
+        this.saldo = saldo;
+    }
+    
+    public Conta(double saldo, int numero) {
+        this(saldo);
+        this.numero = numero;
+    }
+    
+    public int getNumero() {
+        return this.numero;
+    }
+    
+    public int getTotal() {
+        return Conta.totalDeContas;
+    }
     
     public double getSaldo() {
         return this.saldo;

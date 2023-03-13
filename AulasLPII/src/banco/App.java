@@ -17,7 +17,7 @@ public class App {
         Conta minhaConta = new Conta();
         Scanner entrada = new Scanner(System.in);
         
-        minhaConta.deposita(1000);
+        // minhaConta.deposita(1000);
         System.out.println("Saldo na conta: R$" + minhaConta.getSaldo());
         
         System.out.println("Digite um valor para depositar: ");
