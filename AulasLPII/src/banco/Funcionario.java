@@ -109,6 +109,10 @@ public class Funcionario {
         this.ativo = false;
     }
     
+    public double bonificacao() {
+        return this.getSalario() * 0.05;
+    }
+    
     public void mostra() {
         System.out.println("Nome: " + this.getNome());
         System.out.println("Departamento: " + this.getDepartamento());
