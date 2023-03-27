@@ -110,7 +110,7 @@ public class Funcionario {
     }
     
     public double bonificacao() {
-        return this.getSalario() * 0.05;
+        return this.getSalario() * 0.10;
     }
     
     public void mostra() {
