@@ -17,12 +17,14 @@ public class Internacao {
     private int dias;
     
     private static int id = 0;
+    private int identificador;
     
     public Internacao(Paciente p, Enfermeiro e, Medico m) {
         this.pac = p;
         this.enf = e;
         this.med = m;
         id++;
+        this.identificador = id;
     }
 
     /**
@@ -121,6 +123,20 @@ public class Internacao {
      */
     public static void setId(int aId) {
         id = aId;
+    }
+
+    /**
+     * @return the identificador
+     */
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    /**
+     * @param identificador the identificador to set
+     */
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
     }
     
     

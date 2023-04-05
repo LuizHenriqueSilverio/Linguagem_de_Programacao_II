@@ -39,6 +39,17 @@ public class Teste {
         
         listaInternacao.add(internacao);
         
+        for(Internacao i : listaInternacao) {
+            System.out.println("Paciente: " + i.getPac().getNome());
+            System.out.println("Medico: " + i.getMed().getNome());
+            System.out.println("Enfermeiro: " + i.getEnf().getNome());
+            System.out.println("Nº da Internacao: " + i.getIdentificador());
+            System.out.println("Motivo: " + i.getMotivo());
+            System.out.println("Valor do dia de internação: R$" + i.getValorDia());
+            System.out.println("Dias de internacao: " + i.getDias());
+            System.out.println("Valor total de internacao: " + (i.getDias() * i.getValorDia()));
+        }
+        
         
         
         
