@@ -9,7 +9,7 @@ package banco;
  *
  * @author luizh
  */
-public class Funcionario {
+abstract public class Funcionario {
      private String nome;
      private String departamento;
      private double salario;
@@ -109,9 +109,7 @@ public class Funcionario {
         this.ativo = false;
     }
     
-    public double bonificacao() {
-        return this.getSalario() * 0.10;
-    }
+    abstract double getBonificacao();
     
     public void mostra() {
         System.out.println("Nome: " + this.getNome());

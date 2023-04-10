@@ -55,7 +55,8 @@ public class Gerente extends Funcionario{
         this.funcGerenciados = funcGerenciados;
     }
     
+    @Override
     public double getBonificacao() {
-        return super.bonificacao() + 1000;
+        return super.getSalario() + 1000;
     }
 }
