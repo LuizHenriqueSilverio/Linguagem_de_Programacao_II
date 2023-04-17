@@ -1,0 +1,5 @@
+/RevisaoHospital/build/
+/ListaDeExercicioPolimorfismo/nbproject/private/
+/ListaDeExercicioPolimorfismo/build/
+/ListaDeExercicioClassesAbstratas/nbproject/private/
+/AulasLPII/dist/
