@@ -27,20 +27,34 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        barraMenu = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
+        menuCidade = new javax.swing.JMenuItem();
+        menuFuncionario = new javax.swing.JMenuItem();
+        menuAjuda = new javax.swing.JMenu();
+        menuSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
 
-        jMenu1.setText("Cadastro");
-        jMenuBar1.add(jMenu1);
+        menuCadastro.setText("Cadastro");
 
-        jMenu2.setText("Ajuda");
-        jMenuBar1.add(jMenu2);
+        menuCidade.setText("Cidade");
+        menuCadastro.add(menuCidade);
 
-        setJMenuBar(jMenuBar1);
+        menuFuncionario.setText("Funcionario");
+        menuCadastro.add(menuFuncionario);
+
+        barraMenu.add(menuCadastro);
+
+        menuAjuda.setText("Ajuda");
+
+        menuSobre.setText("Sobre");
+        menuAjuda.add(menuSobre);
+
+        barraMenu.add(menuAjuda);
+
+        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,8 +106,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenu menuAjuda;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenuItem menuCidade;
+    private javax.swing.JMenuItem menuFuncionario;
+    private javax.swing.JMenuItem menuSobre;
     // End of variables declaration//GEN-END:variables
 }
