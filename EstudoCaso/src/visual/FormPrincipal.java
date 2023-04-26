@@ -38,10 +38,16 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
+        setPreferredSize(new java.awt.Dimension(640, 480));
 
         menuCadastro.setText("Cadastro");
 
         menuCidade.setText("Cidade");
+        menuCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCidadeActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuCidade);
 
         menuFuncionario.setText("Funcionario");
@@ -81,6 +87,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Sistema de Cadastro\nDireitos Reservados\nVersão 1.0");
     }//GEN-LAST:event_menuSobreActionPerformed
 
+    private void menuCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCidadeActionPerformed
+        //this: chama a partir deste form
+        //true: Modal: sobrepõe o ofrm principal e não deixa acessá-lo
+        FormCidade form = new FormCidade(this, true);
+         
+    }//GEN-LAST:event_menuCidadeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -92,7 +105,7 @@ public class FormPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -111,7 +124,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPrincipal().setVisible(true);
+               FormPrincipal form = new FormPrincipal();
+               form.setLocationRelativeTo(null);
+               form.setVisible(true);
             }
         });
     }
