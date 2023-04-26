@@ -5,6 +5,7 @@
  */
 package visual;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -91,7 +92,10 @@ public class FormPrincipal extends javax.swing.JFrame {
         //this: chama a partir deste form
         //true: Modal: sobrepõe o ofrm principal e não deixa acessá-lo
         FormCidade form = new FormCidade(this, true);
-         
+        form.setLocationRelativeTo(null);
+        // form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        form.setResizable(false);
+        form.setVisible(true);
     }//GEN-LAST:event_menuCidadeActionPerformed
 
     /**
