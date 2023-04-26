@@ -5,6 +5,8 @@
  */
 package visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author luizh
@@ -50,6 +52,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuAjuda.setText("Ajuda");
 
         menuSobre.setText("Sobre");
+        menuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSobreActionPerformed(evt);
+            }
+        });
         menuAjuda.add(menuSobre);
 
         barraMenu.add(menuAjuda);
@@ -69,6 +76,10 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
+        JOptionPane.showMessageDialog(null, "Sistema de Cadastro\nDireitos Reservados\nVersão 1.0");
+    }//GEN-LAST:event_menuSobreActionPerformed
 
     /**
      * @param args the command line arguments
