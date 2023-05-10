@@ -27,12 +27,85 @@ public class FormCidade extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnPrimeiro = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
+        btnProximo = new javax.swing.JButton();
+        btnUltimo = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
+        painelAbas = new javax.swing.JTabbedPane();
+        Listagem = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Dados = new javax.swing.JPanel();
+
+        setPreferredSize(new java.awt.Dimension(540, 390));
         setTitle("Cadastro de Cidades");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
             }
         });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Navegação"));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+
+        btnPrimeiro.setText("Primeira");
+        jPanel1.add(btnPrimeiro);
+
+        btnAnterior.setText("Anterior");
+        jPanel1.add(btnAnterior);
+
+        btnProximo.setText("Proximo");
+        jPanel1.add(btnProximo);
+
+        btnUltimo.setText("Ultimo");
+        jPanel1.add(btnUltimo);
+
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnFechar);
+
+        Listagem.setLayout(new java.awt.BorderLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        Listagem.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        painelAbas.addTab("tab2", Listagem);
+        painelAbas.addTab("tab1", Dados);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(painelAbas, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelAbas, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        painelAbas.getAccessibleContext().setAccessibleName("Listagem");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -44,6 +117,11 @@ public class FormCidade extends java.awt.Dialog {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -64,5 +142,16 @@ public class FormCidade extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Dados;
+    private javax.swing.JPanel Listagem;
+    private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnPrimeiro;
+    private javax.swing.JButton btnProximo;
+    private javax.swing.JButton btnUltimo;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTabbedPane painelAbas;
     // End of variables declaration//GEN-END:variables
 }
