@@ -28,6 +28,7 @@ public class FormCidade extends java.awt.Dialog {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         listCidade = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Cidade>())
         ;
@@ -39,8 +40,8 @@ public class FormCidade extends java.awt.Dialog {
         btnFechar = new javax.swing.JButton();
         painelAbas = new javax.swing.JTabbedPane();
         Listagem = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCidade = new javax.swing.JTable();
         Dados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,20 +91,22 @@ public class FormCidade extends java.awt.Dialog {
 
         Listagem.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listCidade, tblCidade);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codCidade}"));
+        columnBinding.setColumnName("Cod Cidade");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCidade}"));
+        columnBinding.setColumnName("Nome Cidade");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ufCidade}"));
+        columnBinding.setColumnName("Uf Cidade");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
 
-        Listagem.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jScrollPane2.setViewportView(tblCidade);
+
+        Listagem.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         painelAbas.addTab("Listagem", Listagem);
 
@@ -209,6 +212,8 @@ public class FormCidade extends java.awt.Dialog {
 
         painelAbas.getAccessibleContext().setAccessibleName("Listagem");
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,12 +274,13 @@ public class FormCidade extends java.awt.Dialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private java.util.List listCidade;
+    private javax.swing.JScrollPane jScrollPane2;
+    private java.util.List<Cidade> listCidade;
     private javax.swing.JTabbedPane painelAbas;
     private javax.swing.JPanel painelAcoes;
+    private javax.swing.JTable tblCidade;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
