@@ -44,13 +44,13 @@ public class FormCidade extends java.awt.Dialog {
         jLabel3 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
-        txtUf = new javax.swing.JTextField();
         painelAcoes = new javax.swing.JPanel();
         btnNovo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        cbxUF = new javax.swing.JComboBox<>();
 
         txtCodigo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +116,7 @@ public class FormCidade extends java.awt.Dialog {
 
         jLabel3.setText("UF:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -125,12 +126,6 @@ public class FormCidade extends java.awt.Dialog {
         txtCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCidadeActionPerformed(evt);
-            }
-        });
-
-        txtUf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUfActionPerformed(evt);
             }
         });
 
@@ -151,6 +146,8 @@ public class FormCidade extends java.awt.Dialog {
 
         btnExcluir.setText("Fechar");
         painelAcoes.add(btnExcluir);
+
+        cbxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout DadosLayout = new javax.swing.GroupLayout(Dados);
         Dados.setLayout(DadosLayout);
@@ -173,7 +170,7 @@ public class FormCidade extends java.awt.Dialog {
                         .addGap(18, 18, 18)
                         .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DadosLayout.setVerticalGroup(
@@ -192,7 +189,7 @@ public class FormCidade extends java.awt.Dialog {
                 .addGap(18, 18, 18)
                 .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(185, Short.MAX_VALUE))
         );
 
@@ -243,10 +240,6 @@ public class FormCidade extends java.awt.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigo1ActionPerformed
 
-    private void txtUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUfActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -278,6 +271,7 @@ public class FormCidade extends java.awt.Dialog {
     private javax.swing.JButton btnProximo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnUltimo;
+    private javax.swing.JComboBox<String> cbxUF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -289,6 +283,5 @@ public class FormCidade extends java.awt.Dialog {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigo1;
-    private javax.swing.JTextField txtUf;
     // End of variables declaration//GEN-END:variables
 }
