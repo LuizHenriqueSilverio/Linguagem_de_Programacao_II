@@ -161,6 +161,11 @@ public class FormCidade extends java.awt.Dialog {
         painelAcoes.setLayout(new java.awt.GridLayout(1, 0));
 
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnNovo);
 
         btnEditar.setText("Editar");
@@ -170,6 +175,11 @@ public class FormCidade extends java.awt.Dialog {
         painelAcoes.add(btnCancelar);
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnSalvar);
 
         btnExcluir.setText("Fechar");
@@ -263,6 +273,20 @@ public class FormCidade extends java.awt.Dialog {
     private void txtCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCidadeActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        listCidade.add((Cidade) new Cidade()); // cria um objeto e uma linha na tabela
+        int linha = listCidade.size() - 1;
+        tblCidade.setRowSelectionInterval(linha, linha); //seleciona a linha
+        txtCidade.requestFocus(); //caixa de texto com o nome da cidade recebe o foco
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        int linhaSelecionada = tblCidade.getSelectedRow();
+        Cidade objCidade = listCidade.get(linhaSelecionada);
+        objDAOCidade.salvar(objCidade);
+        atualizaTabela();
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
