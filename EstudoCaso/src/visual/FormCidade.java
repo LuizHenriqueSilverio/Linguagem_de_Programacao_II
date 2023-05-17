@@ -6,6 +6,7 @@
 package visual;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Cidade;
 import modelo.DAOCidade;
 /**
@@ -61,6 +62,20 @@ public class FormCidade extends java.awt.Dialog {
         txtCidade.setEnabled(editando);
         cbxUF.setEnabled(editando);
         tblCidade.setEnabled(editando);
+    }
+    
+    public boolean validaCampos() {
+        if(!(txtCidade.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o nome da Cidade");
+            txtCidade.requestFocus();
+            return false;
+        }
+        if(!(cbxUF.getSelectedIndex() >= 0)) {
+            JOptionPane.showMessageDialog(null, "Selecione uma UF");
+            cbxUF.requestFocus();
+            return false;
+        }
+        return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,11 +325,13 @@ public class FormCidade extends java.awt.Dialog {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        int linhaSelecionada = tblCidade.getSelectedRow();
-        Cidade objCidade = listCidade.get(linhaSelecionada);
-        objDAOCidade.salvar(objCidade);
-        atualizaTabela();
-        trataEdicao(false);
+       if(validaCampos()){
+            int linhaSelecionada = tblCidade.getSelectedRow();
+            Cidade objCidade = listCidade.get(linhaSelecionada);
+            objDAOCidade.salvar(objCidade);
+            atualizaTabela();
+            trataEdicao(false);
+       }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
