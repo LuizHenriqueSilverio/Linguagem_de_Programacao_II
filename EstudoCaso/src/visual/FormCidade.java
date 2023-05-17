@@ -23,6 +23,7 @@ public class FormCidade extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         atualizaTabela();
+        trataEdicao(false);
     }
 
     public void atualizaTabela() {
@@ -34,6 +35,32 @@ public class FormCidade extends java.awt.Dialog {
             tblCidade.setRowSelectionInterval(linha, linha);
             tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, linha, true));
         }
+    }
+    
+    private void trataEdicao(boolean editando) {
+        btnCancelar.setEnabled(editando);
+        btnSalvar.setEnabled(editando);
+        btnEditar.setEnabled(editando);
+        btnNovo.setEnabled(!editando);
+        btnFechar.setEnabled(!editando);
+        
+        int linha = listCidade.size() - 1;
+        if(linha < 0) {
+            btnExcluir.setEnabled(false);
+            txtCodigo.setText("");
+            txtCidade.setText("");
+        }else {
+            btnExcluir.setEnabled(!editando);
+        }
+        
+        btnPrimeiro.setEnabled(!editando);
+        btnProximo.setEnabled(!editando);
+        btnAnterior.setEnabled(!editando);
+        btnUltimo.setEnabled(!editando);
+        
+        txtCidade.setEnabled(editando);
+        cbxUF.setEnabled(editando);
+        tblCidade.setEnabled(editando);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,7 +209,7 @@ public class FormCidade extends java.awt.Dialog {
         });
         painelAcoes.add(btnSalvar);
 
-        btnExcluir.setText("Fechar");
+        btnExcluir.setText("Excluir");
         painelAcoes.add(btnExcluir);
 
         javax.swing.GroupLayout DadosLayout = new javax.swing.GroupLayout(Dados);
@@ -279,6 +306,7 @@ public class FormCidade extends java.awt.Dialog {
         int linha = listCidade.size() - 1;
         tblCidade.setRowSelectionInterval(linha, linha); //seleciona a linha
         txtCidade.requestFocus(); //caixa de texto com o nome da cidade recebe o foco
+        trataEdicao(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -286,6 +314,7 @@ public class FormCidade extends java.awt.Dialog {
         Cidade objCidade = listCidade.get(linhaSelecionada);
         objDAOCidade.salvar(objCidade);
         atualizaTabela();
+        trataEdicao(false);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
