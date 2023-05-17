@@ -41,7 +41,7 @@ public class FormCidade extends java.awt.Dialog {
     private void trataEdicao(boolean editando) {
         btnCancelar.setEnabled(editando);
         btnSalvar.setEnabled(editando);
-        btnEditar.setEnabled(editando);
+        btnEditar.setEnabled(!editando);
         btnNovo.setEnabled(!editando);
         btnFechar.setEnabled(!editando);
         
@@ -211,9 +211,19 @@ public class FormCidade extends java.awt.Dialog {
         painelAcoes.add(btnNovo);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnEditar);
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnCancelar);
 
         btnSalvar.setText("Salvar");
@@ -333,6 +343,16 @@ public class FormCidade extends java.awt.Dialog {
             trataEdicao(false);
        }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        trataEdicao(true);
+        txtCidade.requestFocus();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        trataEdicao(false);
+        atualizaTabela();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
