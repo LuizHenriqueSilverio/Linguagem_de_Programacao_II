@@ -235,6 +235,11 @@ public class FormCidade extends java.awt.Dialog {
         painelAcoes.add(btnSalvar);
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnExcluir);
 
         javax.swing.GroupLayout DadosLayout = new javax.swing.GroupLayout(Dados);
@@ -353,6 +358,20 @@ public class FormCidade extends java.awt.Dialog {
         trataEdicao(false);
         atualizaTabela();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int opcao = JOptionPane.showOptionDialog(null, "Confirmar exclusão?", "Pergunta", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, new String[]{"Sim","Não"}, "Sim");
+        
+        if(opcao == 0) {
+            int linhaSelecionada = tblCidade.getSelectedRow();
+            Cidade objCidade = listCidade.get(linhaSelecionada);
+            objDAOCidade.remover(objCidade);
+            atualizaTabela();
+            trataEdicao(false);
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
