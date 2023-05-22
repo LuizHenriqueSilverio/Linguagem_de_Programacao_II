@@ -124,15 +124,35 @@ public class FormCidade extends java.awt.Dialog {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         btnPrimeiro.setText("Primeira");
+        btnPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrimeiroActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPrimeiro);
 
         btnAnterior.setText("Anterior");
+        btnAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAnterior);
 
         btnProximo.setText("Proximo");
+        btnProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnProximo);
 
         btnUltimo.setText("Ultimo");
+        btnUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUltimoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnUltimo);
 
         btnFechar.setText("Fechar");
@@ -372,6 +392,40 @@ public class FormCidade extends java.awt.Dialog {
         }
         
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
+        tblCidade.setRowSelectionInterval(0, 0);
+        tblCidade.scrollRectToVisible(tblCidade.getCellRect(0, 0, true));
+    }//GEN-LAST:event_btnPrimeiroActionPerformed
+
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+        int linha = tblCidade.getSelectedRow();
+        
+        if(linha - 1 >= 0) {
+            linha--;
+        }
+        
+        tblCidade.setRowSelectionInterval(linha, linha);
+        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btnAnteriorActionPerformed
+
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+        int linha = tblCidade.getSelectedRow();
+        
+        if(linha + 1 <= (tblCidade.getRowCount()) - 1){
+            linha++;
+        }
+        
+        tblCidade.setRowSelectionInterval(linha, linha);
+        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btnProximoActionPerformed
+
+    private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
+        int linha = tblCidade.getRowCount() - 1;
+        
+        tblCidade.setRowSelectionInterval(linha, linha);
+        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btnUltimoActionPerformed
 
     /**
      * @param args the command line arguments
