@@ -8,6 +8,14 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Funcionario&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="java.util.List" name="listCidade">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList&lt;Cidade&gt;())"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cidade&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="modelo.ConverteData" name="converteData1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="title" type="java.lang.String" value="Cadastro de Cidades"/>
@@ -157,6 +165,16 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -165,19 +183,28 @@
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="elements" source="listFuncionario" target="tblFuncionario" targetPath="elements" updateStrategy="0" immediately="true">
-                      <Subbinding sourcePath="${codCidade}">
+                      <Subbinding sourcePath="${codFuncionario}">
                         <BindingParameter name="NAME" value="C&#xf3;digo"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${nomeCidade}">
-                        <BindingParameter name="NAME" value="Cidade"/>
+                      <Subbinding sourcePath="${nascimentoFuncionario}">
+                        <BindingParameter name="NAME" value="Nascimento"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Calendar.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${nomeFuncionario}">
+                        <BindingParameter name="NAME" value="Nome"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${ufCidade}">
-                        <BindingParameter name="NAME" value="UF"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      <Subbinding sourcePath="${objCidade}">
+                        <BindingParameter name="NAME" value="Cidade"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="modelo.Cidade.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${salarioFuncionario}">
+                        <BindingParameter name="NAME" value="Salario"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
                     </BindingProperty>
@@ -201,7 +228,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelAcoes" pref="532" max="32767" attributes="0"/>
+                      <Component id="painelAcoes" pref="598" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -273,7 +300,7 @@
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
               <BindingProperties>
-                <BindingProperty name="text" source="tblFuncionario" sourcePath="${selectedElement.codCidade}" target="txtCodigo" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="tblFuncionario" sourcePath="${selectedElement.codFuncionario}" target="txtCodigo" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>

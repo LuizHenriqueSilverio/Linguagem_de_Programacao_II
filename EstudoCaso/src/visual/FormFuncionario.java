@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
 import modelo.DAOFuncionario;
+import modelo.DAOCidade;
+import modelo.Cidade;
 /**
  *
  * @author luizh
@@ -16,6 +18,8 @@ import modelo.DAOFuncionario;
 public class FormFuncionario extends java.awt.Dialog {
 
     DAOFuncionario objDAOFuncionario = new DAOFuncionario();
+    DAOCidade objDAOCidade = new DAOCidade();
+         
     
     /**
      * Creates new form FormCidade
@@ -25,6 +29,8 @@ public class FormFuncionario extends java.awt.Dialog {
         initComponents();
         atualizaTabela();
         trataEdicao(false);
+        listCidade.clear();
+        listCidade.addAll(objDAOCidade.getLista());
     }
 
     public void atualizaTabela() {
@@ -88,6 +94,8 @@ public class FormFuncionario extends java.awt.Dialog {
 
         listFuncionario = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Funcionario>())
         ;
+        listCidade = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Cidade>());
+        converteData1 = new modelo.ConverteData();
         jPanel1 = new javax.swing.JPanel();
         btnPrimeiro = new javax.swing.JButton();
         btnAnterior = new javax.swing.JButton();
@@ -167,17 +175,24 @@ public class FormFuncionario extends java.awt.Dialog {
         Listagem.setLayout(new java.awt.BorderLayout());
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFuncionario, tblFuncionario);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codCidade}"));
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codFuncionario}"));
         columnBinding.setColumnName("Código");
         columnBinding.setColumnClass(Integer.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCidade}"));
-        columnBinding.setColumnName("Cidade");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nascimentoFuncionario}"));
+        columnBinding.setColumnName("Nascimento");
+        columnBinding.setColumnClass(java.util.Calendar.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeFuncionario}"));
+        columnBinding.setColumnName("Nome");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ufCidade}"));
-        columnBinding.setColumnName("UF");
-        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${objCidade}"));
+        columnBinding.setColumnName("Cidade");
+        columnBinding.setColumnClass(modelo.Cidade.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${salarioFuncionario}"));
+        columnBinding.setColumnName("Salario");
+        columnBinding.setColumnClass(Double.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
@@ -195,7 +210,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         txtCodigo.setEditable(false);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.codCidade}"), txtCodigo, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.codFuncionario}"), txtCodigo, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +282,7 @@ public class FormFuncionario extends java.awt.Dialog {
             DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+                .addComponent(painelAcoes, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
             .addGroup(DadosLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,11 +473,13 @@ public class FormFuncionario extends java.awt.Dialog {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnUltimo;
     private javax.swing.JComboBox<String> cbxUF;
+    private modelo.ConverteData converteData1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private java.util.List<Cidade> listCidade;
     private java.util.List<Funcionario> listFuncionario;
     private javax.swing.JTabbedPane painelAbas;
     private javax.swing.JPanel painelAcoes;
