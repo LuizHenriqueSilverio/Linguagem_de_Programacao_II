@@ -33,8 +33,8 @@ public class FormFuncionario extends java.awt.Dialog {
         int linha = listFuncionario.size() - 1;
         
         if(linha >= 0) {
-            tblCidade.setRowSelectionInterval(linha, linha);
-            tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, linha, true));
+            tblFuncionario.setRowSelectionInterval(linha, linha);
+            tblFuncionario.scrollRectToVisible(tblFuncionario.getCellRect(linha, linha, true));
         }
     }
     
@@ -61,7 +61,7 @@ public class FormFuncionario extends java.awt.Dialog {
         
         txtCidade.setEnabled(editando);
         cbxUF.setEnabled(editando);
-        tblCidade.setEnabled(editando);
+        tblFuncionario.setEnabled(editando);
     }
     
     public boolean validaCampos() {
@@ -97,7 +97,7 @@ public class FormFuncionario extends java.awt.Dialog {
         painelAbas = new javax.swing.JTabbedPane();
         Listagem = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCidade = new javax.swing.JTable();
+        tblFuncionario = new javax.swing.JTable();
         Dados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -166,7 +166,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         Listagem.setLayout(new java.awt.BorderLayout());
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFuncionario, tblCidade);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFuncionario, tblFuncionario);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codCidade}"));
         columnBinding.setColumnName("Código");
         columnBinding.setColumnClass(Integer.class);
@@ -181,7 +181,7 @@ public class FormFuncionario extends java.awt.Dialog {
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jScrollPane2.setViewportView(tblCidade);
+        jScrollPane2.setViewportView(tblFuncionario);
 
         Listagem.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
@@ -195,7 +195,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         txtCodigo.setEditable(false);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblCidade, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.codCidade}"), txtCodigo, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.codCidade}"), txtCodigo, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +204,7 @@ public class FormFuncionario extends java.awt.Dialog {
             }
         });
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblCidade, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.nomeCidade}"), txtCidade, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.nomeCidade}"), txtCidade, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         txtCidade.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +215,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         cbxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblCidade, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.ufCidade}"), cbxUF, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.ufCidade}"), cbxUF, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         painelAcoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
@@ -353,16 +353,16 @@ public class FormFuncionario extends java.awt.Dialog {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         listFuncionario.add((Funcionario) new Funcionario()); // cria um objeto e uma linha na tabela
         int linha = listFuncionario.size() - 1;
-        tblCidade.setRowSelectionInterval(linha, linha); //seleciona a linha
+        tblFuncionario.setRowSelectionInterval(linha, linha); //seleciona a linha
         txtCidade.requestFocus(); //caixa de texto com o nome da cidade recebe o foco
         trataEdicao(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        if(validaCampos()){
-            int linhaSelecionada = tblCidade.getSelectedRow();
-            Cidade objCidade = listFuncionario.get(linhaSelecionada);
-            objDAOFuncionario.salvar(objCidade);
+            int linhaSelecionada = tblFuncionario.getSelectedRow();
+            Funcionario objFuncionario = listFuncionario.get(linhaSelecionada);
+            objDAOFuncionario.salvar(objFuncionario);
             atualizaTabela();
             trataEdicao(false);
        }
@@ -383,9 +383,9 @@ public class FormFuncionario extends java.awt.Dialog {
                     JOptionPane.QUESTION_MESSAGE, null, new String[]{"Sim","Não"}, "Sim");
         
         if(opcao == 0) {
-            int linhaSelecionada = tblCidade.getSelectedRow();
-            Cidade objCidade = listFuncionario.get(linhaSelecionada);
-            objDAOFuncionario.remover(objCidade);
+            int linhaSelecionada = tblFuncionario.getSelectedRow();
+            Funcionario objFuncionario = listFuncionario.get(linhaSelecionada);
+            objDAOFuncionario.remover(objFuncionario);
             atualizaTabela();
             trataEdicao(false);
         }
@@ -393,37 +393,37 @@ public class FormFuncionario extends java.awt.Dialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
-        tblCidade.setRowSelectionInterval(0, 0);
-        tblCidade.scrollRectToVisible(tblCidade.getCellRect(0, 0, true));
+        tblFuncionario.setRowSelectionInterval(0, 0);
+        tblFuncionario.scrollRectToVisible(tblFuncionario.getCellRect(0, 0, true));
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        int linha = tblCidade.getSelectedRow();
+        int linha = tblFuncionario.getSelectedRow();
         
         if(linha - 1 >= 0) {
             linha--;
         }
         
-        tblCidade.setRowSelectionInterval(linha, linha);
-        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+        tblFuncionario.setRowSelectionInterval(linha, linha);
+        tblFuncionario.scrollRectToVisible(tblFuncionario.getCellRect(linha, 0, true));
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        int linha = tblCidade.getSelectedRow();
+        int linha = tblFuncionario.getSelectedRow();
         
-        if(linha + 1 <= (tblCidade.getRowCount()) - 1){
+        if(linha + 1 <= (tblFuncionario.getRowCount()) - 1){
             linha++;
         }
         
-        tblCidade.setRowSelectionInterval(linha, linha);
-        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+        tblFuncionario.setRowSelectionInterval(linha, linha);
+        tblFuncionario.scrollRectToVisible(tblFuncionario.getCellRect(linha, 0, true));
     }//GEN-LAST:event_btnProximoActionPerformed
 
     private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
-        int linha = tblCidade.getRowCount() - 1;
+        int linha = tblFuncionario.getRowCount() - 1;
         
-        tblCidade.setRowSelectionInterval(linha, linha);
-        tblCidade.scrollRectToVisible(tblCidade.getCellRect(linha, 0, true));
+        tblFuncionario.setRowSelectionInterval(linha, linha);
+        tblFuncionario.scrollRectToVisible(tblFuncionario.getCellRect(linha, 0, true));
     }//GEN-LAST:event_btnUltimoActionPerformed
 
     /**
@@ -466,7 +466,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private java.util.List<Funcionario> listFuncionario;
     private javax.swing.JTabbedPane painelAbas;
     private javax.swing.JPanel painelAcoes;
-    private javax.swing.JTable tblCidade;
+    private javax.swing.JTable tblFuncionario;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
