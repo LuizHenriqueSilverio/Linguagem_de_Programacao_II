@@ -28,9 +28,9 @@ public class FormFuncionario extends java.awt.Dialog {
     }
 
     public void atualizaTabela() {
-        listCidade.clear();
-        listCidade.addAll(objDAOFuncionario.getLista());
-        int linha = listCidade.size() - 1;
+        listFuncionario.clear();
+        listFuncionario.addAll(objDAOFuncionario.getLista());
+        int linha = listFuncionario.size() - 1;
         
         if(linha >= 0) {
             tblCidade.setRowSelectionInterval(linha, linha);
@@ -45,7 +45,7 @@ public class FormFuncionario extends java.awt.Dialog {
         btnNovo.setEnabled(!editando);
         btnFechar.setEnabled(!editando);
         
-        int linha = listCidade.size() - 1;
+        int linha = listFuncionario.size() - 1;
         if(linha < 0) {
             btnExcluir.setEnabled(false);
             txtCodigo.setText("");
@@ -86,7 +86,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        listCidade = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Cidade>())
+        listFuncionario = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Funcionario>())
         ;
         jPanel1 = new javax.swing.JPanel();
         btnPrimeiro = new javax.swing.JButton();
@@ -166,7 +166,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         Listagem.setLayout(new java.awt.BorderLayout());
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listCidade, tblCidade);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFuncionario, tblCidade);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codCidade}"));
         columnBinding.setColumnName("Código");
         columnBinding.setColumnClass(Integer.class);
@@ -351,8 +351,8 @@ public class FormFuncionario extends java.awt.Dialog {
     }//GEN-LAST:event_txtCidadeActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        listCidade.add((Funcionario) new Funcionario()); // cria um objeto e uma linha na tabela
-        int linha = listCidade.size() - 1;
+        listFuncionario.add((Funcionario) new Funcionario()); // cria um objeto e uma linha na tabela
+        int linha = listFuncionario.size() - 1;
         tblCidade.setRowSelectionInterval(linha, linha); //seleciona a linha
         txtCidade.requestFocus(); //caixa de texto com o nome da cidade recebe o foco
         trataEdicao(true);
@@ -361,7 +361,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        if(validaCampos()){
             int linhaSelecionada = tblCidade.getSelectedRow();
-            Cidade objCidade = listCidade.get(linhaSelecionada);
+            Cidade objCidade = listFuncionario.get(linhaSelecionada);
             objDAOFuncionario.salvar(objCidade);
             atualizaTabela();
             trataEdicao(false);
@@ -384,7 +384,7 @@ public class FormFuncionario extends java.awt.Dialog {
         
         if(opcao == 0) {
             int linhaSelecionada = tblCidade.getSelectedRow();
-            Cidade objCidade = listCidade.get(linhaSelecionada);
+            Cidade objCidade = listFuncionario.get(linhaSelecionada);
             objDAOFuncionario.remover(objCidade);
             atualizaTabela();
             trataEdicao(false);
@@ -463,7 +463,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private java.util.List<Cidade> listCidade;
+    private java.util.List<Funcionario> listFuncionario;
     private javax.swing.JTabbedPane painelAbas;
     private javax.swing.JPanel painelAcoes;
     private javax.swing.JTable tblCidade;
