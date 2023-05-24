@@ -430,6 +430,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
+              <BindingProperties>
+                <BindingProperty name="value" source="tblFuncionario" sourcePath="${selectedElement.nascimentoFuncionario}" target="txtNascimento" targetPath="value" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
             </Component>
           </SubComponents>
         </Container>
