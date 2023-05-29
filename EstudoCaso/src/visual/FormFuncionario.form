@@ -14,7 +14,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cidade&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="modelo.ConverteData" name="converteData1">
+    <Component class="modelo.ConverteData" name="converteData">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -315,9 +315,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Nome:"/>
-              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -431,8 +428,15 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
               <BindingProperties>
-                <BindingProperty name="value" source="tblFuncionario" sourcePath="${selectedElement.nascimentoFuncionario}" target="txtNascimento" targetPath="value" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="value" source="tblFuncionario" sourcePath="${selectedElement.nascimentoFuncionario}" target="txtNascimento" targetPath="value" updateStrategy="0" immediately="false">
+                  <Property name="converter" type="org.jdesktop.beansbinding.Converter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                    <ComponentRef name="converteData"/>
+                  </Property>
+                </BindingProperty>
               </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="javax.swing.text.MaskFormatter maskData = null;&#xd;&#xa;try {&#xd;&#xa;    maskData = new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;);&#xd;&#xa;    maskData.setPlaceholderCharacter(&apos;_&apos;);&#xd;&#xa;}catch(Exception e) {&#xd;&#xa;    System.out.println(&quot;Erro: &quot; + e);&#xd;&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

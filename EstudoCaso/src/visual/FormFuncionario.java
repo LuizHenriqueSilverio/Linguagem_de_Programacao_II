@@ -95,7 +95,7 @@ public class FormFuncionario extends java.awt.Dialog {
         listFuncionario = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Funcionario>())
         ;
         listCidade = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Cidade>());
-        converteData1 = new modelo.ConverteData();
+        converteData = new modelo.ConverteData();
         jPanel1 = new javax.swing.JPanel();
         btnPrimeiro = new javax.swing.JButton();
         btnAnterior = new javax.swing.JButton();
@@ -122,6 +122,13 @@ public class FormFuncionario extends java.awt.Dialog {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        javax.swing.text.MaskFormatter maskData = null;
+        try {
+            maskData = new javax.swing.text.MaskFormatter("##/##/####");
+            maskData.setPlaceholderCharacter('_');
+        }catch(Exception e) {
+            System.out.println("Erro: " + e);
+        }
         txtNascimento = new javax.swing.JFormattedTextField();
 
         setTitle("Cadastro de Cidades");
@@ -288,6 +295,7 @@ public class FormFuncionario extends java.awt.Dialog {
         jLabel6.setText("Nascimento:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.nascimentoFuncionario}"), txtNascimento, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding.setConverter(converteData);
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout DadosLayout = new javax.swing.GroupLayout(Dados);
@@ -353,8 +361,6 @@ public class FormFuncionario extends java.awt.Dialog {
                     .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
-
-        jLabel2.getAccessibleContext().setAccessibleName("Nome:");
 
         painelAbas.addTab("Dados", Dados);
 
@@ -509,7 +515,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnUltimo;
     private javax.swing.JComboBox<String> cbxCidade;
-    private modelo.ConverteData converteData1;
+    private modelo.ConverteData converteData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
