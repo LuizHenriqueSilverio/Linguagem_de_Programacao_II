@@ -52,6 +52,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuCadastro.add(menuCidade);
 
         menuFuncionario.setText("Funcionario");
+        menuFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionarioActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuFuncionario);
 
         barraMenu.add(menuCadastro);
@@ -97,6 +102,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_menuCidadeActionPerformed
+
+    private void menuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionarioActionPerformed
+        FormFuncionario form = new FormFuncionario(this, true);
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_menuFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -56,6 +56,8 @@ public class FormFuncionario extends java.awt.Dialog {
             btnExcluir.setEnabled(false);
             txtCodigo.setText("");
             txtFuncionario.setText("");
+            txtNascimento.setText("");
+            txtSalario.setText("");
         }else {
             btnExcluir.setEnabled(!editando);
         }
@@ -67,18 +69,30 @@ public class FormFuncionario extends java.awt.Dialog {
         
         txtFuncionario.setEnabled(editando);
         cbxCidade.setEnabled(editando);
+        txtNascimento.setEnabled(editando);
+        txtSalario.setEnabled(editando);
         tblFuncionario.setEnabled(editando);
     }
     
     public boolean validaCampos() {
         if(!(txtFuncionario.getText().length() > 0)) {
-            JOptionPane.showMessageDialog(null, "Informe o nome da Cidade");
+            JOptionPane.showMessageDialog(null, "Informe o nome do funcionário!");
             txtFuncionario.requestFocus();
             return false;
         }
         if(!(cbxCidade.getSelectedIndex() >= 0)) {
-            JOptionPane.showMessageDialog(null, "Selecione uma UF");
+            JOptionPane.showMessageDialog(null, "Selecione uma cidade!");
             cbxCidade.requestFocus();
+            return false;
+        }
+        if(!(txtNascimento.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe a data de nascimento!");
+            txtNascimento.requestFocus();
+            return false;
+        }
+        if(!(txtSalario.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o valor do salário!");
+            txtSalario.requestFocus();
             return false;
         }
         return true;
@@ -120,7 +134,7 @@ public class FormFuncionario extends java.awt.Dialog {
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         javax.swing.text.MaskFormatter maskData = null;
         try {
@@ -129,7 +143,7 @@ public class FormFuncionario extends java.awt.Dialog {
         }catch(Exception e) {
             System.out.println("Erro: " + e);
         }
-        txtNascimento = new javax.swing.JFormattedTextField();
+        txtNascimento = new javax.swing.JFormattedTextField(maskData);
 
         setTitle("Cadastro de Cidades");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -289,7 +303,7 @@ public class FormFuncionario extends java.awt.Dialog {
 
         jLabel4.setText("Salário:");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.salarioFuncionario}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFuncionario, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.salarioFuncionario}"), txtSalario, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jLabel6.setText("Nascimento:");
@@ -325,7 +339,7 @@ public class FormFuncionario extends java.awt.Dialog {
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(DadosLayout.createSequentialGroup()
@@ -350,7 +364,7 @@ public class FormFuncionario extends java.awt.Dialog {
                 .addGap(18, 18, 18)
                 .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -523,7 +537,6 @@ public class FormFuncionario extends java.awt.Dialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private java.util.List<Cidade> listCidade;
     private java.util.List<Funcionario> listFuncionario;
     private javax.swing.JTabbedPane painelAbas;
@@ -532,6 +545,7 @@ public class FormFuncionario extends java.awt.Dialog {
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtFuncionario;
     private javax.swing.JFormattedTextField txtNascimento;
+    private javax.swing.JTextField txtSalario;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
