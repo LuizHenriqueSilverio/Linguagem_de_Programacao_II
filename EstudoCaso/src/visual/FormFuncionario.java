@@ -204,9 +204,9 @@ public class FormFuncionario extends java.awt.Dialog {
         columnBinding.setColumnName("Código");
         columnBinding.setColumnClass(Integer.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nascimentoFuncionario}"));
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nascimentoFormatado}"));
         columnBinding.setColumnName("Nascimento");
-        columnBinding.setColumnClass(java.util.Calendar.class);
+        columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeFuncionario}"));
         columnBinding.setColumnName("Nome");
@@ -215,6 +215,7 @@ public class FormFuncionario extends java.awt.Dialog {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${objCidade}"));
         columnBinding.setColumnName("Cidade");
         columnBinding.setColumnClass(modelo.Cidade.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${salarioFuncionario}"));
         columnBinding.setColumnName("Salario");
         columnBinding.setColumnClass(Double.class);

@@ -5,7 +5,9 @@
  */
 package modelo;
 
+import java.beans.Transient;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -88,5 +90,9 @@ public class Funcionario implements Serializable {
         return true;
     }
     
-    
+    @Transient // não persistente
+    public String getNascimentoFormatado() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(nascimentoFuncionario.getTime());
+    }
 }
