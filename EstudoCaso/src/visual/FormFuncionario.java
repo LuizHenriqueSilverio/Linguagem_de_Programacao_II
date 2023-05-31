@@ -112,6 +112,16 @@ public class FormFuncionario extends java.awt.Dialog {
             return false;
         }
         
+        if(txtSalario.getText().length() > 0) {
+            try {
+                Double.parseDouble(txtSalario.getText());
+            }catch(Exception e) {
+                JOptionPane.showMessageDialog(null, "Informe o valor do salário!");
+                txtSalario.requestFocus();
+                return false;
+            }
+        }
+        
         return true;
     }
     /**
