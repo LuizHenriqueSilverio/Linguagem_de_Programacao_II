@@ -5,6 +5,7 @@
  */
 package visual;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
@@ -75,26 +76,42 @@ public class FormFuncionario extends java.awt.Dialog {
     }
     
     public boolean validaCampos() {
+        
         if(!(txtFuncionario.getText().length() > 0)) {
             JOptionPane.showMessageDialog(null, "Informe o nome do funcionário!");
             txtFuncionario.requestFocus();
             return false;
         }
+        
         if(!(cbxCidade.getSelectedIndex() >= 0)) {
             JOptionPane.showMessageDialog(null, "Selecione uma cidade!");
             cbxCidade.requestFocus();
             return false;
         }
+        
         if(!(txtNascimento.getText().length() > 0)) {
             JOptionPane.showMessageDialog(null, "Informe a data de nascimento!");
             txtNascimento.requestFocus();
             return false;
         }
+        if(txtNascimento.getText().length() > 0) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            try {
+                sdf.parse(txtNascimento.getText());
+            }catch(Exception e) {
+                JOptionPane.showMessageDialog(null, "Data de Nascimento inválida!");
+                txtNascimento.requestFocus();
+                return false;
+            }
+        }
+        
         if(!(txtSalario.getText().length() > 0)) {
             JOptionPane.showMessageDialog(null, "Informe o valor do salário!");
             txtSalario.requestFocus();
             return false;
         }
+        
         return true;
     }
     /**
