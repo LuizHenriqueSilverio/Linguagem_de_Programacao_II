@@ -36,7 +36,7 @@ public class Conexao {
                 System.out.println("Erro de conexão: " + ex.getMessage());
             }
         }
-        return null;
+        return con;
     }
     
     public static PreparedStatement getPreparedStatement(String sql) {

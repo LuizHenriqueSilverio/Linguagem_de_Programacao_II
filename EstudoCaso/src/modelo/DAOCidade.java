@@ -28,7 +28,7 @@ public class DAOCidade {
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
                 Cidade objCidade = new Cidade();
-                objCidade.setCodCidade(rs.getInt("codCidade"));
+                objCidade.setCodCidade(rs.getInt("codcidade"));
                 objCidade.setNomeCidade(rs.getString("nome"));
                 objCidade.setUfCidade(rs.getString("uf"));
                 listaCidade.add(objCidade);
