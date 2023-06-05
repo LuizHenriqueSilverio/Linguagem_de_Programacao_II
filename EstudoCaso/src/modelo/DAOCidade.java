@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class DAOCidade { 
     
     public List<Cidade> getLista() {
-        String sql = "select * from cidade";
+        String sql = "SELECT * FROM CIDADE";
         List<Cidade> listaCidade = new ArrayList<>();
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
