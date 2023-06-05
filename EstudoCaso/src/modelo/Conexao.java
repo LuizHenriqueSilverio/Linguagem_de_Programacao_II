@@ -42,7 +42,14 @@ public class Conexao {
     public static PreparedStatement getPreparedStatement(String sql) {
         if(con == null) {
             con = getConexao();
+        }try {
+            return con.prepareStatement(sql);
+        }catch(SQLException ex) {
+            System.out.println("Erro de SQL: " + ex.getMessage());
         }
         return null;
     }
+    
+    
+    
 }
