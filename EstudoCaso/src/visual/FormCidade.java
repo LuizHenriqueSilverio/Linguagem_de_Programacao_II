@@ -5,7 +5,10 @@
  */
 package visual;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Cidade;
 import modelo.DAOCidade;
@@ -363,7 +366,11 @@ public class FormCidade extends java.awt.Dialog {
        if(validaCampos()){
             int linhaSelecionada = tblCidade.getSelectedRow();
             Cidade objCidade = listCidade.get(linhaSelecionada);
-            objDAOCidade.salvar(objCidade);
+           try {
+               objDAOCidade.salvar(objCidade);
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Erro de SQL: " + ex.getMessage());
+           }
             atualizaTabela();
             trataEdicao(false);
        }
@@ -386,7 +393,7 @@ public class FormCidade extends java.awt.Dialog {
         if(opcao == 0) {
             int linhaSelecionada = tblCidade.getSelectedRow();
             Cidade objCidade = listCidade.get(linhaSelecionada);
-            objDAOCidade.remover(objCidade);
+            //objDAOCidade.remover(objCidade);
             atualizaTabela();
             trataEdicao(false);
         }

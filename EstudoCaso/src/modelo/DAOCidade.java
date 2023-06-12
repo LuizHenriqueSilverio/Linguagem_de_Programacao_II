@@ -59,13 +59,33 @@ public class DAOCidade {
             return false;
     }
     
+    public boolean alterar(Cidade obj) throws SQLException {
+        String sql = "update cidade set nome=?, uf=? where codigo=?";
+        try {
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setString(1, obj.getNomeCidade());
+            pst.setString(2, obj.getUfCidade());
+            pst.setInt(3, obj.getCodCidade());
+            if (pst.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Cidade alterada!");
+                return true;
+            }else {
+                JOptionPane.showMessageDialog(null, "Cidade não cidade não alterada!");
+                return false;
+            } 
+        }catch(SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro de SQL: " + e.getMessage());
+            }
+            return false;
+    }
+    
     public boolean salvar(Cidade obj) throws SQLException {
         if (obj.getCodCidade()== null) {
             return incluir(obj);
         } else {
-            // return alterar(obj);
-            return true;
+            return alterar(obj);
         }
-
     }
+    
+    
 }
