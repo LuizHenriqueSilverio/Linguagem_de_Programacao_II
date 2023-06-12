@@ -393,7 +393,11 @@ public class FormCidade extends java.awt.Dialog {
         if(opcao == 0) {
             int linhaSelecionada = tblCidade.getSelectedRow();
             Cidade objCidade = listCidade.get(linhaSelecionada);
-            //objDAOCidade.remover(objCidade);
+            try {
+                objDAOCidade.remover(objCidade);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro de SQL: " + ex.getMessage());
+            }
             atualizaTabela();
             trataEdicao(false);
         }

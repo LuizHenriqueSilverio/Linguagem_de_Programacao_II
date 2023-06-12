@@ -60,7 +60,7 @@ public class DAOCidade {
     }
     
     public boolean alterar(Cidade obj) throws SQLException {
-        String sql = "update cidade set nome=?, uf=? where codigo=?";
+        String sql = "update cidade set nome=?, uf=? where codCidade=?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getNomeCidade());
@@ -70,7 +70,25 @@ public class DAOCidade {
                 JOptionPane.showMessageDialog(null, "Cidade alterada!");
                 return true;
             }else {
-                JOptionPane.showMessageDialog(null, "Cidade não cidade não alterada!");
+                JOptionPane.showMessageDialog(null, "Cidade não alterada!");
+                return false;
+            } 
+        }catch(SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro de SQL: " + e.getMessage());
+            }
+            return false;
+    }
+    
+    public boolean remover(Cidade obj) throws SQLException {
+        String sql = "delete from cidade where codCidade=?";
+        try {
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, obj.getCodCidade());
+            if (pst.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Cidade excluida!");
+                return true;
+            }else {
+                JOptionPane.showMessageDialog(null, "Cidade não excluida!");
                 return false;
             } 
         }catch(SQLException e) {
