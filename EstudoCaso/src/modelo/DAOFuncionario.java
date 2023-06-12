@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class DAOFuncionario {
     
+    DAOCidade objDAOCidade = new DAOCidade();
+    
     public List<Funcionario> getLista() {
         String sql = "SELECT * FROM FUNCIONARIO";
         List<Funcionario> listaFuncionario = new ArrayList<>();
@@ -27,13 +29,17 @@ public class DAOFuncionario {
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
                 Funcionario objFuncionario = new Funcionario();
-                objFuncionario.setCodFuncionario(rs.getInt("codfuncionario"));
+                
                 java.sql.Date dt = rs.getDate("nascimento");
                 Calendar c = Calendar.getInstance();
                 c.setTime(dt);
+                
+                
+                
+                objFuncionario.setCodFuncionario(rs.getInt("codfuncionario"));
                 objFuncionario.setNascimentoFuncionario(c);
                 objFuncionario.setNomeFuncionario(rs.getString("nome"));
-                //objFuncionario.setObjCidade(rs.getInt("cidade"));
+                objFuncionario.setObjCidade(objDAOCidade.localizar(rs.getInt("codcidade")));
                 objFuncionario.setSalarioFuncionario(rs.getDouble("salario"));
                 listaFuncionario.add(objFuncionario);
             }
