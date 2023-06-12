@@ -40,17 +40,32 @@ public class DAOCidade {
         
     }
     
-    public boolean salvar(Cidade obj) {
-        if(obj.getCodCidade() ==  null){
-            Integer codigo = Dados.listaCidade.size() + 1;
-            obj.setCodCidade(codigo);
-            Dados.listaCidade.add(obj);
-        }
-        return true;
+    public boolean incluir(Cidade obj) throws SQLException {
+        String sql = "insert into cidade (nome,uf) values(?,?)";
+        try {
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setString(1, obj.getNomeCidade());
+            pst.setString(2, obj.getUfCidade());
+            if (pst.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Cidade incluida");
+                return true;
+            }else {
+                JOptionPane.showMessageDialog(null, "Cidade não incluida");
+                return false;
+            } 
+        }catch(SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro de SQL: " + e.getMessage());
+            }
+            return false;
     }
     
-    public boolean remover(Cidade obj) {
-        Dados.listaCidade.remove(obj);
-        return true;
+    public boolean salvar(Cidade obj) throws SQLException {
+        if (obj.getCodCidade()== null) {
+            return incluir(obj);
+        } else {
+            // return alterar(obj);
+            return true;
+        }
+
     }
 }
