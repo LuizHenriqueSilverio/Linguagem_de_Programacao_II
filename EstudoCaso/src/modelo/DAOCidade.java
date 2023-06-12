@@ -97,12 +97,33 @@ public class DAOCidade {
             return false;
     }
     
+    
+    
     public boolean salvar(Cidade obj) throws SQLException {
         if (obj.getCodCidade()== null) {
             return incluir(obj);
         } else {
             return alterar(obj);
         }
+    }
+    
+    public Cidade localizar(Integer id){
+        String sql = "select * from cidade where codigo=?";
+        Cidade obj = new Cidade();
+        try{
+            PreparedStatement pst = Conexao.getPreparedStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                obj.setCodCidade(rs.getInt("codcidade"));
+                obj.setNomeCidade(rs.getString("nome"));
+                obj.setUfCidade(rs.getString("uf"));
+                return obj;
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro de SQL: " + e.getMessage());
+        }
+        return null;
     }
     
     
