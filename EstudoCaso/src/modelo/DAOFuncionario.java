@@ -59,10 +59,10 @@ public class DAOFuncionario {
             pst.setDate(3, new java.sql.Date(obj.getNascimentoFuncionario().getTimeInMillis()));
             pst.setInt(4, obj.getObjCidade().getCodCidade());
             if (pst.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "Funcionario incluido");
+                JOptionPane.showMessageDialog(null, "Funcionario incluido!");
                 return true;
             }else {
-                JOptionPane.showMessageDialog(null, "Funcionario não incluido");
+                JOptionPane.showMessageDialog(null, "Funcionario não incluido!");
                 return false;
             } 
         }catch(SQLException e) {
@@ -93,16 +93,16 @@ public class DAOFuncionario {
             return false;
     }
     
-    public boolean remover(Cidade obj) throws SQLException {
-        String sql = "delete from cidade where codCidade=?";
+    public boolean remover(Funcionario obj) throws SQLException {
+        String sql = "delete from funcionario where codFuncionario=?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setInt(1, obj.getCodCidade());
+            pst.setInt(1, obj.getCodFuncionario());
             if (pst.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "Cidade excluida!");
+                JOptionPane.showMessageDialog(null, "Funcionario excluido!");
                 return true;
             }else {
-                JOptionPane.showMessageDialog(null, "Cidade não excluida!");
+                JOptionPane.showMessageDialog(null, "Funcionario não excluido!");
                 return false;
             } 
         }catch(SQLException e) {
