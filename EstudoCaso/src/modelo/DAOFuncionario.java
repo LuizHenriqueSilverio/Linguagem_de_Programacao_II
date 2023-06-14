@@ -50,17 +50,19 @@ public class DAOFuncionario {
         
     }
     
-    public boolean incluir(Cidade obj) throws SQLException {
-        String sql = "insert into cidade (nome,uf) values(?,?)";
+    public boolean incluir(Funcionario obj) throws SQLException {
+        String sql = "insert into funcionario (nome, salario, nascimento, cidade) values(?,?,?,?)";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setString(1, obj.getNomeCidade());
-            pst.setString(2, obj.getUfCidade());
+            pst.setString(1, obj.getNomeFuncionario());
+            pst.setDouble(2, obj.getSalarioFuncionario());
+            pst.setDate(3, new java.sql.Date(obj.getNascimentoFuncionario().getTimeInMillis()));
+            pst.setInt(4, obj.getObjCidade().getCodCidade());
             if (pst.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "Cidade incluida");
+                JOptionPane.showMessageDialog(null, "Funcionario incluido");
                 return true;
             }else {
-                JOptionPane.showMessageDialog(null, "Cidade não incluida");
+                JOptionPane.showMessageDialog(null, "Funcionario não incluido");
                 return false;
             } 
         }catch(SQLException e) {
@@ -107,8 +109,8 @@ public class DAOFuncionario {
             return false;
     }
     
-    public boolean salvar(Cidade obj) throws SQLException {
-        if (obj.getCodCidade()== null) {
+    public boolean salvar(Funcionario obj) throws SQLException {
+        if (obj.getCodFuncionario()== null) {
             return incluir(obj);
         } else {
             return alterar(obj);
