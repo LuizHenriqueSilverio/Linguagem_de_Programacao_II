@@ -5,8 +5,11 @@
  */
 package visual;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
 import modelo.DAOFuncionario;
@@ -461,7 +464,11 @@ public class FormFuncionario extends java.awt.Dialog {
        if(validaCampos()){
             int linhaSelecionada = tblFuncionario.getSelectedRow();
             Funcionario objFuncionario = listFuncionario.get(linhaSelecionada);
-            objDAOFuncionario.salvar(objFuncionario);
+           try {
+               objDAOFuncionario.salvar(objFuncionario);
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Erro de SQL: " + ex.getMessage());
+           }
             atualizaTabela();
             trataEdicao(false);
        }
@@ -484,7 +491,11 @@ public class FormFuncionario extends java.awt.Dialog {
         if(opcao == 0) {
             int linhaSelecionada = tblFuncionario.getSelectedRow();
             Funcionario objFuncionario = listFuncionario.get(linhaSelecionada);
-            objDAOFuncionario.remover(objFuncionario);
+            try {
+                objDAOFuncionario.remover(objFuncionario);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro de SQL: " + ex.getMessage());
+            }
             atualizaTabela();
             trataEdicao(false);
         }

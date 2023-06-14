@@ -72,7 +72,7 @@ public class DAOFuncionario {
     }
     
     public boolean alterar(Funcionario obj) throws SQLException {
-        String sql = "update funcionario set nome=?, salario=?, nascimento=?, cidade=? where codFuncionario=?";
+        String sql = "update funcionario set nome=?, salario=?, nascimento=?, cidade_codcidade=? where codfuncionario=?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getNomeFuncionario());
@@ -94,7 +94,7 @@ public class DAOFuncionario {
     }
     
     public boolean remover(Funcionario obj) throws SQLException {
-        String sql = "delete from funcionario where codFuncionario=?";
+        String sql = "delete from funcionario where codfuncionario=?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setInt(1, obj.getCodFuncionario());
