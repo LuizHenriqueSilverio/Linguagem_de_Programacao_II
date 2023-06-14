@@ -39,7 +39,7 @@ public class DAOFuncionario {
                 objFuncionario.setCodFuncionario(rs.getInt("codfuncionario"));
                 objFuncionario.setNascimentoFuncionario(c);
                 objFuncionario.setNomeFuncionario(rs.getString("nome"));
-                objFuncionario.setObjCidade(objDAOCidade.localizar(rs.getInt("codcidade")));
+                objFuncionario.setObjCidade(objDAOCidade.localizar(rs.getInt("cidade_codcidade")));
                 objFuncionario.setSalarioFuncionario(rs.getDouble("salario"));
                 listaFuncionario.add(objFuncionario);
             }
@@ -51,7 +51,7 @@ public class DAOFuncionario {
     }
     
     public boolean incluir(Funcionario obj) throws SQLException {
-        String sql = "insert into funcionario (nome, salario, nascimento, cidade) values(?,?,?,?)";
+        String sql = "insert into funcionario (nome, salario, nascimento, cidade_codcidade) values(?,?,?,?)";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
             pst.setString(1, obj.getNomeFuncionario());

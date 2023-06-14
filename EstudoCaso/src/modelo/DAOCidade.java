@@ -108,7 +108,7 @@ public class DAOCidade {
     }
     
     public Cidade localizar(Integer id){
-        String sql = "select * from cidade where codigo=?";
+        String sql = "select * from cidade where codCidade=?";
         Cidade obj = new Cidade();
         try{
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
