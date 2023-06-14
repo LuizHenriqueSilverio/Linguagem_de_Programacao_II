@@ -71,18 +71,20 @@ public class DAOFuncionario {
             return false;
     }
     
-    public boolean alterar(Cidade obj) throws SQLException {
-        String sql = "update cidade set nome=?, uf=? where codCidade=?";
+    public boolean alterar(Funcionario obj) throws SQLException {
+        String sql = "update funcionario set nome=?, salario=?, nascimento=?, cidade=? where codFuncionario=?";
         try {
             PreparedStatement pst = Conexao.getPreparedStatement(sql);
-            pst.setString(1, obj.getNomeCidade());
-            pst.setString(2, obj.getUfCidade());
-            pst.setInt(3, obj.getCodCidade());
+            pst.setString(1, obj.getNomeFuncionario());
+            pst.setDouble(2, obj.getSalarioFuncionario());
+            pst.setDate(3, new java.sql.Date(obj.getNascimentoFuncionario().getTimeInMillis()));
+            pst.setInt(4, obj.getObjCidade().getCodCidade());
+            pst.setInt(5, obj.getCodFuncionario());
             if (pst.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(null, "Cidade alterada!");
+                JOptionPane.showMessageDialog(null, "Funcionario alterado!");
                 return true;
             }else {
-                JOptionPane.showMessageDialog(null, "Cidade não alterada!");
+                JOptionPane.showMessageDialog(null, "Funcionario não alterado!");
                 return false;
             } 
         }catch(SQLException e) {
